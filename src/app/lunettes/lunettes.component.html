@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Liste de Lunettes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let lunette of lunettes">
+                        <td>{{ lunette.idLunette }}</td>
+                        <td>{{ lunette.nomLunette }}</td>
+                        <td>{{ lunette.prixLunette }}</td>
+                        <td>{{ lunette.dateCreation | date:'dd/MM/yyyy' }}</td>
+                        <td>
+                            <a class="btn btn-danger" (click)="supprimerLunette(lunette)">Supprimer</a>
+                        </td>
+                        <td>
+                            <a class="btn btn-success" [routerLink]="['/updateLunette', lunette.idLunette]">Modifier</a>
+                        </td>
+                    </tr>
+                </tbody>
+                
+            </table>
+        </div>
+    </div>
+</div>
