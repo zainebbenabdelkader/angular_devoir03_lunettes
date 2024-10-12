@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Lunette } from '../model/lunette.model'; // Assuming you have a Lunette model
 import { LunetteService } from '../services/lunette.service'; // Assuming you have a Lunette service
+import { Style } from '../model/style.model';
 
 @Component({
   selector: 'app-add-lunette',
@@ -9,18 +11,22 @@ import { LunetteService } from '../services/lunette.service'; // Assuming you ha
 export class AddLunetteComponent implements OnInit {
 
   newLunette = new Lunette();
-  
-  constructor(private lunetteService: LunetteService) { }
+  styles! : Style[];
+  newIdSty! : number;
+  newStyle! : Style;
+  constructor(private lunetteService: LunetteService,private router: Router) { }
 
   ngOnInit(): void {
-    // Optionally load existing lunettes from the service if needed
+    this.styles = this.lunetteService.listeStyles();
     
   }
 
   addLunette() {
-    // Ajouter la nouvelle lunette au service
+    console.log(this.newIdSty);
+    this.newStyle = this.lunetteService.consulterStyle(this.newIdSty);
+    this.newLunette.style = this.newStyle;    
     this.lunetteService.ajouterLunette(this.newLunette);
-    this.newLunette = new Lunette();
+    this.router.navigate(['Lunette']);
 }
 
 }

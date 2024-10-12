@@ -1,10 +1,17 @@
 <div class="container">
     <div class="card shadow mb-4">
         <div class="card-body">
+            
+
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th>Liste de Lunettes</th>
+                        <th>ID Lunette</th>
+                        <th>Nom Lunette</th>
+                        <th>Prix Lunette</th>
+                        <th>Date de Création</th>
+                        
+                        <th>Style</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -13,15 +20,12 @@
                         <td>{{ lunette.nomLunette }}</td>
                         <td>{{ lunette.prixLunette }}</td>
                         <td>{{ lunette.dateCreation | date:'dd/MM/yyyy' }}</td>
-                        <td>
-                            <a class="btn btn-danger" (click)="supprimerLunette(lunette)">Supprimer</a>
-                        </td>
-                        <td>
+                        <td>{{lunette.style.nomSty}}</td>
+                        <td><a class="btn btn-danger" (click)="supprimerLunette(lunette)">Supprimer</a>
                             <a class="btn btn-success" [routerLink]="['/updateLunette', lunette.idLunette]">Modifier</a>
                         </td>
                     </tr>
                 </tbody>
-                
             </table>
         </div>
     </div>
